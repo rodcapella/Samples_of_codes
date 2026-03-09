@@ -1,0 +1,19 @@
+# Slowly Changing Dimension (SCD Type 2)
+WITH ordered_updates AS (
+    SELECT
+        user_id,
+        country,
+        updated_at,
+        LEAD(updated_at) OVER (
+            PARTITION BY user_id
+            ORDER BY updated_at
+        ) AS next_update
+    FROM users_updates
+)
+
+SELECT
+    user_id,
+    country,
+    updated_at AS valid_from,
+    COALESCE(next_update, '9999-12-31') AS valid_to
+FROM ordered_updates;
