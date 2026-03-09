@@ -77,7 +77,7 @@ This folder is useful for:
 
 ## Repository Context
 
-These queries are part of the **Samples_of_codes** repository, which contains examples and experiments across different programming languages and technologies.
+These queries are part of the **Samples_of_codes** repository, which contains examples and experiments on SQL.
 
 ## License
 
